@@ -122,8 +122,7 @@ public class PgController
 		// ResponseEntity<Pg> pg = new ResponseEntity<Pg>(HttpStatus.OK)
 	}
 	
-	
-//	@GetMapping(value = "/findPgById/{pgId}")
+	//	@GetMapping(value = "/findPgById/{pgId}")
 //	public @ResponseBody Pg findPgById(@PathParam("pgId") long pgId)
 //	{
 //		System.out.println("\n PGController findPgById () with pgid = \n"+pgId);
