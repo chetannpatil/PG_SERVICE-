@@ -45,23 +45,7 @@ public class PgController
 //		return pgService.findPG(address);
 //
 //	}
-	private String houseNumber;
 	
-	//@NotEmpty
-	private String street ;
-	
-	//@NotEmpty
-	private String disrtict ;
-	
-	//@NotEmpty
-	private String state;
-	
-	//@Column(in)
-	//@NotEmpty
-	private String country ;
-	
-	//@NotEmpty
-	private String pin;
 
 	//@RequestMapping(value = "/Id/{Id}/Name/{Name}
 	//path = "/mno/objectKey/{id}/{name}"
@@ -122,8 +106,7 @@ public class PgController
 		// ResponseEntity<Pg> pg = new ResponseEntity<Pg>(HttpStatus.OK)
 	}
 	
-	
-//	@GetMapping(value = "/findPgById/{pgId}")
+	//	@GetMapping(value = "/findPgById/{pgId}")
 //	public @ResponseBody Pg findPgById(@PathParam("pgId") long pgId)
 //	{
 //		System.out.println("\n PGController findPgById () with pgid = \n"+pgId);
