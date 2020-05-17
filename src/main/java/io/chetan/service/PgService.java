@@ -78,6 +78,16 @@ public class PgService
 
 	}
 
+	public void updatePg(Pg pg) 
+	{
+	
+		System.out.println("\n PGService updatePg() with pg = \n"+pg);
+		
+		Pg updatedPg = pgDao.save(pg);
+		
+		System.out.println("\n updatedPg = \n"+updatedPg);
+	}
+
 	
 	
 }

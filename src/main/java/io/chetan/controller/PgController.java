@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +27,7 @@ public class PgController
 	@Autowired
 	private PgService pgService;
 	
-	@PostMapping(value = "/createPG")
+	@PostMapping(value = "/createPg")
 	public @ResponseBody Pg createPG(@RequestBody Pg pg)
 	{
 		System.out.println("\n -----------PGController createPG() with pg = \n"+pg);
@@ -49,7 +50,7 @@ public class PgController
 
 	//@RequestMapping(value = "/Id/{Id}/Name/{Name}
 	//path = "/mno/objectKey/{id}/{name}"
-	@GetMapping(value = "findPG/houseNumber/street/disrtict/state/country/pin/{houseNumber}/{street}/{disrtict}/{state}/{country}/{pin}")
+	@GetMapping(value = "findPg/houseNumber/street/disrtict/state/country/pin/{houseNumber}/{street}/{disrtict}/{state}/{country}/{pin}")
 	public @ResponseBody Pg findPG(@PathVariable("houseNumber") String houseNumber,
 			@PathVariable("street") String street,
 			@PathVariable("disrtict") String disrtict,
@@ -114,5 +115,11 @@ public class PgController
 //		return pgService.findPgById(pgId);
 //	}
 //	
-	
+	@PutMapping(value = "/updatePg")
+	public void updatePg(@RequestBody Pg pg)
+	{
+		System.out.println("\n PGController updatePg () with pg = \n"+pg);
+		
+		pgService.updatePg(pg);
+	}
 }
