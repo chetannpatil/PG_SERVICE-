@@ -35,3 +35,31 @@
 2020-05-17 19:34:30.708  WARN 4130 --- [http-nio-8082-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : no data
 2020-05-17 20:40:32.033  WARN 4130 --- [http-nio-8082-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: -1100, SQLState: 02000
 2020-05-17 20:40:32.034  WARN 4130 --- [http-nio-8082-exec-2] o.h.engine.jdbc.spi.SqlExceptionHelper   : no data
+2020-05-17 21:18:33.410  INFO 4130 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-17 21:18:33.413  INFO 4130 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2020-05-17 21:18:33.441  INFO 4130 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-05-17 21:18:33.447  INFO 4130 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-05-17 21:18:33.998  INFO 4130 --- [restartedMain] io.chetan.PgServiceApplication           : Starting PgServiceApplication on chetan-Lenovo-G40-45 with PID 4130 (/media/chetan/WORK1/020_APRIL_STS_WORKSPACE/PgService/target/classes started by chetan in /media/chetan/WORK1/020_APRIL_STS_WORKSPACE/PgService)
+2020-05-17 21:18:34.000  INFO 4130 --- [restartedMain] io.chetan.PgServiceApplication           : No active profile set, falling back to default profiles: default
+2020-05-17 21:18:35.484  INFO 4130 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-05-17 21:18:35.562  INFO 4130 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75ms. Found 1 JPA repository interfaces.
+2020-05-17 21:18:36.210  INFO 4130 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8082 (http)
+2020-05-17 21:18:36.213  INFO 4130 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-17 21:18:36.215  INFO 4130 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-05-17 21:18:36.236  INFO 4130 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-17 21:18:36.237  INFO 4130 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2211 ms
+2020-05-17 21:18:36.459  INFO 4130 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-17 21:18:36.499  INFO 4130 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2020-05-17 21:18:36.501  WARN 4130 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=org.hsqldb.jdbcDriver was not found, trying direct instantiation.
+2020-05-17 21:18:36.625  INFO 4130 --- [restartedMain] com.zaxxer.hikari.pool.PoolBase          : HikariPool-2 - Driver does not support get/set network timeout for connections. (feature not supported)
+2020-05-17 21:18:36.635  INFO 4130 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2020-05-17 21:18:36.636  INFO 4130 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.HSQLDialect
+2020-05-17 21:18:37.083  INFO 4130 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-17 21:18:37.085  INFO 4130 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-17 21:18:37.099  INFO 4130 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2020-05-17 21:18:37.385  WARN 4130 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-17 21:18:37.546  INFO 4130 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-17 21:18:37.693  WARN 4130 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2020-05-17 21:18:38.008  INFO 4130 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8082 (http) with context path ''
+2020-05-17 21:18:38.013  INFO 4130 --- [restartedMain] io.chetan.PgServiceApplication           : Started PgServiceApplication in 4.259 seconds (JVM running for 7512.585)
+2020-05-17 21:18:38.021  INFO 4130 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
