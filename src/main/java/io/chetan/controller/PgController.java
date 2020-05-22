@@ -32,7 +32,7 @@ public class PgController
 	{
 		System.out.println("\n -----------PGController createPG() with pg = \n"+pg);
 		
-		return pgService.createPG(pg);
+		return pgService.createPg(pg);
 	}
 	
 	

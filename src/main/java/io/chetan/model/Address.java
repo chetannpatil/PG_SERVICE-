@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,9 +20,10 @@ public class Address
 
 	//@Id
 	//@GeneratedValue
-	//private long addresId;
+	private long addresId;
 	
 	//@NotEmpty
+	@Pattern(regexp="(^[0-9]{0,20})",message="should contain only numerics")
 	private String houseNumber;
 	
 	//@NotEmpty
@@ -41,12 +43,16 @@ public class Address
 	private String pin;
 
 
-
+	
+	public long getAddresId() {
+		return addresId;
+	}
 
 	public Address(long addresId, String houseNumber, String street, String disrtict, String state, String country,
 			String pin)
 	{
 		super();
+		this.addresId = addresId;
 		this.houseNumber = houseNumber;
 		this.street = street;
 		this.disrtict = disrtict;
@@ -127,12 +133,11 @@ public class Address
 		return true;
 	}
 
-
-
 	@Override
-	public String toString() {
-		return "Address [houseNumber=" + houseNumber + ", street=" + street + ", disrtict=" + disrtict + ", state="
-				+ state + ", country=" + country + ", pin=" + pin + "]";
+	public String toString() 
+	{
+		return "Address [addresId=" + addresId + ", houseNumber=" + houseNumber + ", street=" + street + ", disrtict="
+				+ disrtict + ", state=" + state + ", country=" + country + ", pin=" + pin + "]";
 	}
 
 	public String getHouseNumber() {

@@ -15,12 +15,9 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
-@Entity
 public class Owner 
 {
 
-	@Id
-	@GeneratedValue
 	private long ownerId;
 
 	@NotEmpty(message="FirstName is mandatory")

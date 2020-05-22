@@ -16,7 +16,7 @@ public class PgService
 	@Autowired
 	private PgDao pgDao ;
 	
-	public Pg createPG(Pg pg)
+	public Pg createPg(Pg pg)
 	{
 		return pgDao.save(pg);
 	}
@@ -68,7 +68,7 @@ public class PgService
 			System.out.println("\n PGService findPGfor(PG pg : allPGs) fro pg = \n"+pg);
 			if(compareAddress.equals(pg.getAddress()))
 			{
-				System.out.println("\n PGService findPG() address.equals(pg.getAddress() = \n"+pg.getAddress());
+				System.out.println("\n yes we found  pg in PGService findPG() @ address.equals(pg.getAddress() = \n"+pg.getAddress());
 				System.out.println("\n so returning pg \n");
 				return pg;
 			}
@@ -87,6 +87,8 @@ public class PgService
 		
 		System.out.println("\n updatedPg = \n"+updatedPg);
 	}
+
+
 
 	
 	
