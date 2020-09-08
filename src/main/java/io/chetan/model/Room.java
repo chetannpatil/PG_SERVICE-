@@ -1,6 +1,7 @@
 package io.chetan.model;
 
 import java.util.Set;
+import java.util.logging.Logger;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,20 +16,23 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
-import io.chetan.exception.InMatesOverFlowInARoomException;
+import io.chetan.inmate.exception.InMatesOverFlowInARoomException;
+
+
 
 public class Room implements Comparable<Room>
 {
 
 	private long roomId;
 	
+	//@OneToMany(mappedBy="myRoom",fetch=FetchType.EAGER)
 	private Set<Long> roomMates ;
 	
 	//@Min(1)
 	//private int numberOfBeds ;
 	//@Pattern(regexp="(^[0-9]{10})",message="Number of beds should be numeric,do not tell that in words pls")
-	@Min(1)
-	@Max(10)
+	@Min(value = 1,message ="There must be atleast 1 bed in the room pls")
+	@Max(value = 10,message ="There can  be max 10 bed in the room ")
 	@NotNull(message="There must be atleast 1 bed in the room pls")
 	@NumberFormat(style=Style.NUMBER)
 	private Integer  numberOfBeds ;
@@ -37,7 +41,7 @@ public class Room implements Comparable<Room>
 	//@Pattern(regexp="(^[0-9]{10})",message="Invalid Phone number")
 	//@Min(1)
 	@NotEmpty(message="Room number is required")
-	@Pattern(regexp="([0-9]{3,4})",message="Room number shouldbe in the range 3digits to 4digits, ex: 402,where 4 = 4th floor, 2 = second room")
+	@Pattern(regexp="([0-9]{3,4})",message="Room number should be in the range 3digits to 4digits, ex: 402,where 4 = 4th floor, 2 = second room")
 	private String roomNumber;
 	//final private String roomNumber;
 	
@@ -48,10 +52,12 @@ public class Room implements Comparable<Room>
 
 	private Long myPg ;
 	
-	
+	@Min(value = 1,message = "U want to pay to tenant or what ?")
 	@NotNull(message="you must reveal room rent per head for this room")
 	@NumberFormat(style=Style.CURRENCY)
 	private Double costPerBed ;
+	
+	private static final Logger LOGGER = Logger.getLogger(Room.class.getName());
 	
 	//constructor
 	public Room()
@@ -193,8 +199,57 @@ public class Room implements Comparable<Room>
 //			return false;
 //	}
 	
+	public boolean addInMate(long inMateId)
+	{
+		//if(inMate != null)
+		//{
+			//check vacancy
+			if(this.numberOfBeds > this.roomMates.size())
+			{
+				if(this.roomMates.add(inMateId) == false)
+				{
+					return false;
+					//throw new DuplicateInMateException("Could not add InMate "+inMate.getFirstName()+" to the room");
+				}
+				else
+					return true ;
+			}
+			else
+			{
+				throw new InMatesOverFlowInARoomException("There is no vacancy in the room = "+this.roomNumber);
+			}
+		//}
+		//else
+			//return false;
+	}
 	//removeInMate() ?
 	
+	public boolean removeInMate(long inMateId)
+	{
+		System.out.println("\n Room removeInMate\n");
+		LOGGER.info("\n Room removeInMate\n");
+		if(this.roomMates.size() <= 0)
+		{
+			System.out.println("\n no one there to remove\n");
+			LOGGER.info("\n Room -removeInMate - no one there to remove\n");
+			return false;
+		}
+		else
+		{
+			if(this.roomMates.remove(inMateId))
+			{
+				System.out.println("\n yes  removed inamte with id = \n"+inMateId);
+				LOGGER.info("\n Room -removeInMate - yes  removed inamte with id\n");
+				return true ;
+			}
+			else
+			{
+				System.out.println("\n could not remove\n");
+				LOGGER.info("\n Room- removeInMate -could not remove\n");
+				return false;
+			}
+		}
+	}
 	//validations
 	private static void validateNoOfBeds(int noOfbeds)
 	{
