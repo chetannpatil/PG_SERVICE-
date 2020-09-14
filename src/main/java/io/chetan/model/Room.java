@@ -16,7 +16,8 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
-import io.chetan.inmate.exception.InMatesOverFlowInARoomException;
+import io.chetan.exception.InMatesOverFlowInARoomException;
+
 
 
 
