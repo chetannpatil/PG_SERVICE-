@@ -2,6 +2,8 @@ package io.chetan.controller;
 
 import javax.websocket.server.PathParam;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,10 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import io.chetan.model.Address;
 import io.chetan.model.Pg;
@@ -27,6 +31,8 @@ public class PgController
 	@Autowired
 	private PgService pgService;
 	
+	private static Logger LOGGER = LogManager.getLogger(PgController.class);
+	
 	@PostMapping(value = "/createPg")
 	public @ResponseBody Pg createPG(@RequestBody Pg pg)
 	{
@@ -36,7 +42,21 @@ public class PgController
 	}
 	
 	
-	
+	@GetMapping(value = "/read")
+	public Pg read()
+	{
+		System.out.println("\n PGController read = \n");
+		
+		LOGGER.info("\n PGController read = \n");
+		Pg pg = new Pg();
+		
+		pg.setName("daridra pg");
+		pg.setMyOwner(1L);
+		
+		pg.setPgId(2);
+		return pg;
+		
+	}
 	
 //	@PostMapping(value = "/findPG")
 //	public @ResponseBody Pg findPG(@RequestBody Address address)
@@ -97,11 +117,48 @@ public class PgController
 //	}
 	
 	//@GetMapping("employee/{id}")
+	@GetMapping(value = "find/{pgId}")
+	public @ResponseBody Pg findPgById_temp(@PathVariable("pgId") long pgId,
+			@RequestHeader("first-request") String header)
+	{                                 //@PathVariable("id") Integer empId
+		System.out.println("\n PGController findPgById () with pgid = \n"+pgId);
+		
+		System.out.println("\n\n\n PG_controller - findPgById with header =   \n\n\n"+header);
+		
+		LOGGER.info("\n\n\n PG_controller - findPgById with header =   \n\n\n"+header);
+		
+//		try {
+//			//1000 ms - 1s
+//			//waiting for 20sceonds
+//			
+//			Thread.sleep(20000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		 return pgService.findPgById(pgId);
+		 
+		// ResponseEntity<Pg> pg = new ResponseEntity<Pg>(HttpStatus.OK)
+	}
+	
+	
+	//@GetMapping("employee/{id}")
 	@GetMapping(value = "findPgById/{pgId}")
 	public @ResponseBody Pg findPgById(@PathVariable("pgId") long pgId)
 	{                                 //@PathVariable("id") Integer empId
 		System.out.println("\n PGController findPgById () with pgid = \n"+pgId);
 		
+		
+		
+//		try {
+//			//1000 ms - 1s
+//			//waiting for 20sceonds
+//			
+//			Thread.sleep(20000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		 return pgService.findPgById(pgId);
 		 
 		// ResponseEntity<Pg> pg = new ResponseEntity<Pg>(HttpStatus.OK)
